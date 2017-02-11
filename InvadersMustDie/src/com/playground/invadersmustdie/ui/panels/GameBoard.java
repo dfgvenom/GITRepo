@@ -28,13 +28,17 @@ public class GameBoard extends JPanel implements InvadersConst {
 		setBackground(BACKGROUND_COLOR);
 		setFocusable(true);
 		
-		createShip();
+		ship = createShip();
+		addShipToBoard();
 	}
 	
-	private void createShip() {
-		ship = new Ship(SHIP_STARTPOS_X, SHIP_STARTPOS_Y);
+	private void addShipToBoard() {
 		add(ship);
 		addKeyListener(new ShipListener(ship));
+	}
+
+	protected Ship createShip() {
+		return new Ship(SHIP_STARTPOS_X, SHIP_STARTPOS_Y);
 	}
 
 	public void cycle() {
@@ -79,8 +83,12 @@ public class GameBoard extends JPanel implements InvadersConst {
 			System.out.println("GameBoard.updateMissiles() count: " + missileList.size());
 			System.out.println("---------------------------------------------");
 		} 
-		
+
 		for (ShipMissile shipMissile : missileList) {
+			if (shipMissile.getParent() == null) {
+				add(shipMissile);
+			}
+			
 			shipMissile.adjustX(10);
 			shipMissile.adjustY(10);
 			shipMissile.repaint();
