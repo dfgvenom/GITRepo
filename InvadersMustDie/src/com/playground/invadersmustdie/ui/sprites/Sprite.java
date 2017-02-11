@@ -51,7 +51,7 @@ public abstract class Sprite extends Component implements InvadersConst {
 			Graphics2D graphics2d = (Graphics2D) g;
 			if (getImage() != null) {
 				AffineTransform xform = new AffineTransform();
-				xform.rotate(getRotation());
+				xform.rotate(getRotation(), getImage().getWidth(this)/2, getImage().getHeight(this)/2);
 				graphics2d.drawImage(getImage(), xform, null);
 			} else {
 				String message = "Sprite.paint(): " + getClass();

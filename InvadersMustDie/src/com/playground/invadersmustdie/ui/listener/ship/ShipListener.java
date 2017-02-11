@@ -64,9 +64,9 @@ public class ShipListener extends KeyAdapter implements InvadersConst {
 		} else if (KeyEvent.VK_DOWN == keyCode && isShiftPressed) {
 			ship.setDirection(DIRECTION_SOUTH);
 		} else if (KeyEvent.VK_RIGHT == keyCode && isShiftPressed) {
-			ship.setDirection(DIRECTION_EAST);
+			ship.setDirection(ship.getDirection()+DIRECTION_EAST);
 		} else if (KeyEvent.VK_LEFT == keyCode && isShiftPressed) {
-			ship.setDirection(DIRECTION_WEST);
+			ship.setDirection(ship.getDirection()+DIRECTION_WEST);
 		}
 	}
 
