@@ -43,6 +43,8 @@ public class GameBoard extends JPanel implements InvadersConst {
 
 	public void cycle() {
 		checkGameStatus();
+		updateShip();
+		updateInvaders();
 		
 		SwingUtil.invokeInEventDispatchThread(new Runnable() {
 			
@@ -53,23 +55,13 @@ public class GameBoard extends JPanel implements InvadersConst {
 		});
 	}
 
-	public void repaint() {
-		super.repaint(); 
-		
-		updateShip();
-		updateInvaders();
-	}
-
-
 	private void checkGameStatus() {
 		
 	}
 
-
 	private void updateShip() {
 		if (ship != null) {
-			ship.repaint();
-			
+			ship.cycle();
 			updateMissiles();
 		}
 	}
@@ -89,9 +81,7 @@ public class GameBoard extends JPanel implements InvadersConst {
 				add(shipMissile);
 			}
 			
-			shipMissile.adjustX(10);
-			shipMissile.adjustY(10);
-			shipMissile.repaint();
+			shipMissile.cycle();
 		}
 	}
 

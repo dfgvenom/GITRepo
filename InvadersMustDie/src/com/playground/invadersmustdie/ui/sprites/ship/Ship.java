@@ -27,12 +27,19 @@ public class Ship extends Sprite {
 	public void fireMissile() {
 		int missileX = getX() + getWidth();
 		int missileY = getY() + getHeight();
-		ShipMissile missile = new ShipMissile(missileX, missileY);
+		ShipMissile missile = new ShipMissile(missileX, missileY, getDirection());
 		missile.setVisible(true);
 		if (DEBUG) {
 			System.out.println("Ship.fireMissile(): " + missile + " at x: " + missileX + ", y: " + missileY);
 		}
 		getMissileList().add(missile);
+	}
+
+	@Override
+	public void cycle() {
+//		for (ShipMissile shipMissile : getMissileList()) {
+//			shipMissile.cycle();
+//		}
 	}
 
 }

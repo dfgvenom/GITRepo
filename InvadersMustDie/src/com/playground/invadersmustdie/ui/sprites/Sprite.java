@@ -61,8 +61,8 @@ public abstract class Sprite extends Component implements InvadersConst {
 		
 	}
 	
-	private double getRotation() {
-		return 90 * direction;
+	protected double getRotation() {
+		return Math.toRadians(10) * direction;
 	}
 
 	protected void updateDimensions() {
@@ -155,5 +155,7 @@ public abstract class Sprite extends Component implements InvadersConst {
 		
 		setY(newY);
 	}
+	
+	public abstract void cycle();
 	
 }
